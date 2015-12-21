@@ -6,20 +6,28 @@
  */
 require_once 'bss_ApiService.php';
 $service = new bss_ApiService();
+//Declare Api Service...................
 $service->ApiService("Yara", "1qazXSW@","http://api.bss.yaravas.com", "192.168.1.1");
 echo "\n";
+
+//Login method....................................
 $service->Login(364); //please put serviceId
+//GetProvince.....................................
 //$service ->GetProvince();
-//$service -> GetTownByProvince(5);
-//$service->GetServiceProviderByReseller();
 
-//SendServiceProviderCommentRequest..........
-//$obj = new SendServiceProviderCommentRequest();
-//$obj->ServiceProviderId=364;
-//$obj->Body ="Hello World";
-//$service->SendServiceProviderComment($obj);
+// GetTownByProvince with ProvinceId..............
+$service -> GetTownByProvince(5);
 
-// Add Service Provider.....................
+//GetServiceProviderByReseller....................
+$service->GetServiceProviderByReseller();
+
+//SendServiceProviderCommentRequest...............
+$obj = new SendServiceProviderCommentRequest();
+$obj->ServiceProviderId=364;
+$obj->Body ="Hello World";
+$service->SendServiceProviderComment($obj);
+
+// Add Service Provider...........................
 $obj = new AddServiceProviderRequest();
 $obj->Title ='Add Title';
 $obj->Tel = '66550000';
@@ -38,10 +46,10 @@ $obj->TownId=100;
 $obj->WebSite='Add WebSite';
 $service->AddServiceProvider($obj);
 
-//GetServiceProviderStatus..........
+//GetServiceProviderStatus........................
 $service->GetServiceProviderStatus();
 
-///sdp/GetServiceProviderComments.........
+///sdp/GetServiceProviderComments.................
 $service->GetServiceProviderComments();
 
 
